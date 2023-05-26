@@ -1,0 +1,23 @@
+{
+  "name": "userlane",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/main.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.13.0",
+    "cypress-file-upload": "^5.0.8"
+  },
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
+    "@types/mocha": "^10.0.1",
+    "mocha": "^10.2.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.4"
+  }
+}
