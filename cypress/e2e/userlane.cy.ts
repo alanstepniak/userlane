@@ -7,15 +7,15 @@ const testData = new TestData
 describe('Apply for a job as Automation Test Engineer', { includeShadowDom: true }, () => {
   it('should navigate to application form', () => {
     cy.visit(userlaneUrl);
-    cy.wait(2000);
+    // yes, I realize,that hardcoded "wait" is not the best solution. It is temporary, just to avoid failing test
+    cy.wait(1000);
     testData.elements.acceptAllButton().click({ force: true });
     testData.elements.closePopup().click({ force: true });
 
-    testData.elements.jobOffer().parent().next().contains("View job").click();
-    cy.wait(2000);
-      testData.elements.dismissButton().click();
-      testData.elements.applyButton().click();
-    
+    testData.elements.jobOffer().parent().next().contains("View job").click({force: true});
+
+    cy.origin('https://jobs.lever.co', () => { cy.get('[data-qa=show-page-apply]').click(); })
+
     // At the begining I have used this hardcoded cy.origin() construction but I decided to use another it() 
 
     // cy.origin(jobsLeverUrl, () => {
@@ -52,10 +52,11 @@ describe('Apply for a job as Automation Test Engineer', { includeShadowDom: true
   });
 
   // I added here a fictional person with his data
-  it.only('should fill the form', () => {
+  it('should fill the form', () => {
     cy.visit("https://jobs.lever.co/userlane/9ff78ee1-9eb2-4cad-b7da-76757cd3c122/apply");
     cy.intercept("https://hcaptcha.com/getcaptcha/e33f87f8-88ec-4e1a-9a13-df9bbb1d8120").as('dataSentConfirmation')
     cy.get("div.content").should("contain", "Automation Test Engineer")
+    testData.elements.dismissButton().click();
     testData.fillForm()
 
     testData.elements.salaryInput().type(testData.personalData.salary);

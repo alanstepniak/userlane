@@ -1,7 +1,7 @@
 export const userlaneUrl = "https://www.userlane.com/about/careers/";
 export const jobsLeverUrl = "https://jobs.lever.co";
 export const linkedInUrl = "https://www.linkedin.com";
-export const twitterUrl = "https://www.twitter.com";
+export const twitterUrl = "https://www.twitter.com";    
 export const gitHubUrl = "https://github.com";
 export const portfolioUrl = "https://www.mypage.com";
 export const otherUrl = "https://www.howtotest.com";
